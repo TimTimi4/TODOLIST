@@ -1,0 +1,149 @@
+//====================================<====Breakpoints====>===============================================
+$minw: 320px;
+$maxw: 1000px;
+$md1: $maxw + 12px;
+$md2: 767.98px;
+// $md2: 992.98px;
+$md3: 767.98px;
+$md4: 479.98px;
+//=====================================<====Breakpoints====>===============================================
+
+//======================================<====Main font====>===============================================
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;900&display=swap");
+$fontfamily: "Nunito";
+//======================================<====Main font====>===============================================
+
+//=========================================<====NullStyle====>============================================
+@import "_nullstyle";
+@import "_popup";
+//=========================================<====NullStyle====>============================================
+
+.container {
+	max-width: $maxw;
+	margin: 0 auto;
+	padding: 0px 10px 0px 10px;
+	// @media (max-width: $md1) {
+	// 	max-width: 750px;
+	// }
+	// @media (max-width: $md2) {
+	// 	max-width: none;
+	// 	padding: 0 35px;
+	// }
+}
+
+body {
+	background-color: #5f81b2;
+}
+
+//========================================================================================================
+
+.todolist {
+	&__header {
+		margin: 54px 0px 0px 0px;
+	}
+
+	&__logo {
+		font-weight: 900;
+		font-size: 60px;
+		line-height: 82px;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+
+	&__btn {
+		font-size: 16px;
+		line-height: 22px;
+		color: #000000;
+		background: #f5d57f;
+		border-radius: 4px;
+		height: 40px;
+		padding: 0px 56px 0px 56px;
+	}
+
+	&__body {
+		margin: 86px 0px 0px 0px;
+	}
+
+	&__title {
+		font-weight: 900;
+		font-size: 22px;
+		line-height: 30px;
+		text-transform: uppercase;
+		color: #fff;
+	}
+}
+.header-todolist {
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__bottom {
+		font-weight: 900;
+		font-size: 18px;
+		line-height: 25px;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+
+	&__row {
+		margin: 26px 0px 0px 0px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__column {
+		flex: 0 1 50%;
+		margin: 10px 8px 10px 8px;
+		&:first-child {
+			margin: 0px 8px 0px 0px;
+		}
+		&:last-child {
+			margin: 0px 0px 0px 8px;
+		}
+	}
+}
+.column {
+	&__task {
+		margin: 10px 0px 10px 0px;
+	}
+}
+.task {
+	position: relative;
+	background: #fff;
+	border-radius: 4px;
+	&__title {
+		padding: 16px 0px 0px 21px;
+		font-weight: 900;
+		font-size: 16px;
+		line-height: 22px;
+	}
+
+	&__text {
+		padding: 7px 53px 51px 20px;
+		font-size: 16px;
+		line-height: 22px;
+	}
+
+	&__checkMark {
+		position: absolute;
+		width: 22px;
+		height: 22px;
+		right: 18px;
+		top: 15px;
+		border: 1px solid #5f81b2;
+		box-sizing: border-box;
+		border-radius: 4px;
+	}
+
+	&__trash {
+		position: absolute;
+		right: 21.17px;
+		bottom: 15.5px;
+	}
+}
+
+.check {
+	text-decoration: line-through;
+}

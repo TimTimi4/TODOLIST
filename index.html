@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="wrapper container">
+		<div class="todolist">
+			<div class="todolist__header header-todolist">
+				<div class="header-todolist__top">
+					<a href="" class="todolist__logo">TODOLIST</a>
+					<button type="button" class="todolist__btn">Создать новую задачу</button>
+				</div>
+				<div class="header-todolist__bottom">by name surname</div>
+			</div>
+			<div class="todolist__body">
+				<h5 class="todolist__title">Список задач</h5>
+				<div class="header-todolist__row">
+					<div class="header-todolist__column column">
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+					</div>
+					<div class="header-todolist__column column">
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+						<div class="column__task task">
+							<h6 class="task__title">Заголовок задачи</h6>
+							<div class="task__text">
+								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
+								на несолько
+								строчек, может быть даже на 4
+							</div>
+							<input class="task__checkMark" type="checkbox" name="checkMark">
+							<div class="task__trash"><i class="fas fa-trash"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popup">
+		<div class="popup__bg"></div>
+		<div class="popup__body">
+			<div class="popup__content">
+				<h6 class="popup__title">Создать задачу</h6>
+				<a href="#" class="popup__close close-popup">x</a>
+				<form class="popup__form popup-form" action="#">
+					<div class="popup-form__taskField">
+						<input type="text" placeholder="Заголовок задачи" class="popup-form__titleField" autofocus>
+					</div>
+					<div class="popup-form__taskField">
+						<textarea type="" placeholder="описание" class="popup-form__descField"></textarea>
+					</div>
+					<div class="popup-form__saveBtn">
+						<button type="submit" class="saveBtn">Сохранить</button>
+					</div>
+					<div class="popup-form__resetBtn">
+						<button type="reset" class="resetBtn" id='saveBtn'>Отмена</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="https://kit.fontawesome.com/b95c58a40e.js" crossorigin="anonymous"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>
