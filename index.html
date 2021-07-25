@@ -23,69 +23,15 @@
 				<h5 class="todolist__title">Список задач</h5>
 				<div class="header-todolist__row">
 					<div class="header-todolist__column column">
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
+						<!-- <div class="column__task task">
+							<h6 class="task__title"></h6>
+							<div class="task__text"></div>
 							<input class="task__checkMark" type="checkbox" name="checkMark">
 							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
-							<input class="task__checkMark" type="checkbox" name="checkMark">
-							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
-							<input class="task__checkMark" type="checkbox" name="checkMark">
-							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
+						</div> -->
 					</div>
-					<div class="header-todolist__column column">
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
-							<input class="task__checkMark" type="checkbox" name="checkMark">
-							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
-							<input class="task__checkMark" type="checkbox" name="checkMark">
-							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
-						<div class="column__task task">
-							<h6 class="task__title">Заголовок задачи</h6>
-							<div class="task__text">
-								Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи
-								на несолько
-								строчек, может быть даже на 4
-							</div>
-							<input class="task__checkMark" type="checkbox" name="checkMark">
-							<div class="task__trash"><i class="fas fa-trash"></i></div>
-						</div>
-					</div>
+					<!-- <div class="header-todolist__column column" id="column2">
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -99,16 +45,16 @@
 				<a href="#" class="popup__close close-popup">x</a>
 				<form class="popup__form popup-form" action="#">
 					<div class="popup-form__taskField">
-						<input type="text" placeholder="Заголовок задачи" class="popup-form__titleField" autofocus>
+						<input type="text" placeholder="Заголовок задачи" name="taskTitle" class="popup-form__titleField">
 					</div>
 					<div class="popup-form__taskField">
-						<textarea type="" placeholder="описание" class="popup-form__descField"></textarea>
+						<textarea type="" placeholder="описание" name="taskDescrip" class="popup-form__descField"></textarea>
 					</div>
 					<div class="popup-form__saveBtn">
-						<button type="submit" class="saveBtn">Сохранить</button>
+						<button type="button" class="saveBtn">Сохранить</button>
 					</div>
 					<div class="popup-form__resetBtn">
-						<button type="reset" class="resetBtn" id='saveBtn'>Отмена</button>
+						<button type="reset" class="resetBtn">Отмена</button>
 					</div>
 				</form>
 			</div>
