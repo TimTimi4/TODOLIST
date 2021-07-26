@@ -143,11 +143,12 @@ h6 {
 
 .close-popup {
   position: absolute;
-  top: 22px;
+  top: 10px;
   right: 25px;
   font-size: 28px;
   font-weight: 600;
   color: #000000;
+  background-color: transparent;
 }
 
 .popup-form__titleField {
@@ -200,7 +201,7 @@ h6 {
   margin: 19px 0px 0px 0px;
 }
 
-.popup-form__resetBtn {
+.popup-form__closeModalBtn {
   background: #aeaeae;
   border-radius: 4px;
   text-align: center;
@@ -216,7 +217,7 @@ h6 {
   min-width: 460px;
 }
 
-.resetBtn {
+.closeModalBtn {
   background-color: transparent;
   font-size: 16px;
   line-height: 22px;
@@ -225,8 +226,93 @@ h6 {
   min-width: 460px;
 }
 
+.popupDeleteTask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
+}
+
+.popupDeleteTask__bg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  opacity: 0.5;
+}
+
+.popupDeleteTask__body {
+  position: relative;
+  z-index: 5;
+  background: #fffbe3;
+  border-radius: 4px;
+  max-width: 500px;
+  margin: 0 auto;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+}
+
+.popupDeleteTask__content {
+  position: relative;
+  padding: 18px 13px 15px 13px;
+}
+
+.popupDeleteTask__title {
+  text-align: center;
+}
+
+.popupDeleteTask__buttons {
+  margin: 10px 0px 0px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.popupDeleteTask__btn {
+  margin: 0px 5px 0px 5px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+  padding: 5px 0px 5px 0px;
+  background: #5f81b3;
+  border-radius: 4px;
+}
+
+.popupDeleteTask__close {
+  margin: 0px 5px 0px 5px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+  padding: 5px 0px 5px 0px;
+  border-radius: 4px;
+  background: #5f81b3;
+}
+
+.openDeleteModal {
+  visibility: visible;
+  opacity: 1;
+}
+
 .container {
-  max-width: 1000px;
+  max-width: 1020px;
   margin: 0 auto;
   padding: 0px 10px 0px 10px;
 }
@@ -294,28 +380,26 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.header-todolist__column {
+.row__task {
+  margin: 10px 9.5px 10px 9.5px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 50%;
-          flex: 0 1 50%;
-  margin: 10px 8px 10px 8px;
+      -ms-flex: 0 1 49%;
+          flex: 0 1 49%;
 }
 
-.header-todolist__column:first-child {
-  margin: 0px 8px 0px 0px;
+.row__task:nth-child(odd) {
+  margin: 10px 9.5px 10px 0px;
 }
 
-.header-todolist__column:last-child {
-  margin: 0px 0px 0px 8px;
-}
-
-.column__task {
-  margin: 10px 0px 10px 0px;
+.row__task:nth-child(even) {
+  margin: 10px 0px 10px 9.5px;
 }
 
 .task {
@@ -353,6 +437,8 @@ body {
   position: absolute;
   right: 21.17px;
   bottom: 15.5px;
+  font-size: 15px;
+  background-color: transparent;
 }
 
 .check {

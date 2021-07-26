@@ -1,6 +1,6 @@
 //====================================<====Breakpoints====>===============================================
 $minw: 320px;
-$maxw: 1000px;
+$maxw: 1020px;
 $md1: $maxw + 12px;
 $md2: 767.98px;
 // $md2: 992.98px;
@@ -90,25 +90,24 @@ body {
 	&__row {
 		margin: 26px 0px 0px 0px;
 		display: flex;
-		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: flex-start;
 	}
+}
 
-	&__column {
-		flex: 0 1 50%;
-		margin: 10px 8px 10px 8px;
-		&:first-child {
-			margin: 0px 8px 0px 0px;
-		}
-		&:last-child {
-			margin: 0px 0px 0px 8px;
-		}
-	}
-}
-.column {
+.row {
 	&__task {
-		margin: 10px 0px 10px 0px;
+		margin: 10px 9.5px 10px 9.5px;
+		flex: 0 1 49%;
+		&:nth-child(odd) {
+			margin: 10px 9.5px 10px 0px;
+		}
+		&:nth-child(even) {
+			margin: 10px 0px 10px 9.5px;
+		}
 	}
 }
+
 .task {
 	position: relative;
 	background: #fff;
@@ -141,6 +140,8 @@ body {
 		position: absolute;
 		right: 21.17px;
 		bottom: 15.5px;
+		font-size: 15px;
+		background-color: transparent;
 	}
 }
 

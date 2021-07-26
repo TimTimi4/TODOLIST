@@ -22,10 +22,20 @@
 			<div class="todolist__body">
 				<h5 class="todolist__title">Список задач</h5>
 				<div class="header-todolist__row">
-					<div class="header-todolist__column column 1">
-					</div>
-					<div class="header-todolist__column column 2">
-					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popupDeleteTask">
+		<div class="popupDeleteTask__bg"></div>
+		<div class="popupDeleteTask__body">
+			<div class="popupDeleteTask__content">
+				<h6 class="popupDeleteTask__title">Вы уверены, что хотите удалить задачу?</h6>
+				<div class="popupDeleteTask__buttons">
+					<button type="button" class="popupDeleteTask__btn">Принять</button>
+					<button type="button" class="popupDeleteTask__close close-popupDeleteTask">Отмена</button>
 				</div>
 			</div>
 		</div>
@@ -36,7 +46,7 @@
 		<div class="popup__body">
 			<div class="popup__content">
 				<h6 class="popup__title">Создать задачу</h6>
-				<a href="#" class="popup__close close-popup">x</a>
+				<button type="button" href="#" class="popup__close close-popup">x</button>
 				<form class="popup__form popup-form" action="#">
 					<div class="popup-form__taskField">
 						<input type="text" placeholder="Заголовок задачи" name="taskTitle" class="popup-form__titleField">
@@ -47,15 +57,13 @@
 					<div class="popup-form__saveBtn">
 						<button type="button" class="saveBtn">Сохранить</button>
 					</div>
-					<div class="popup-form__resetBtn">
-						<button type="reset" class="resetBtn">Отмена</button>
+					<div class="popup-form__closeModalBtn">
+						<button type="button" class="closeModalBtn">Отмена</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
 
 
 
