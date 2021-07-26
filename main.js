@@ -23,6 +23,13 @@ const column = document.querySelector('.column')
 const input = document.querySelector('.popup-form__titleField')
 const textarea = document.querySelector('.popup-form__descField')
 
+
+
+
+
+
+
+
 saveBtn.addEventListener('click', () => {
 	if (input.value != '') {
 
@@ -33,7 +40,6 @@ saveBtn.addEventListener('click', () => {
 		const divTaskTrash = document.createElement('div')
 		const iTrash = document.createElement('i')
 		divTask.classList.add('task', 'column__task')
-		column.prepend(divTask)
 		h6TaskTitle.classList.add('task__title')
 		divTaskText.classList.add('task__text')
 		inputTaskCheckMark.classList.add('task__checkMark')
@@ -44,6 +50,11 @@ saveBtn.addEventListener('click', () => {
 		iTrash.classList.add('fas', 'fa-trash')
 		divTaskTrash.prepend(iTrash)
 
+		column.prepend(divTask)
+
+
+
+
 		const taskTitleArr = document.querySelectorAll('.task__title')
 		const taskTextArr = document.querySelectorAll('.task__text')
 		const taskCheckMarkArr = document.querySelectorAll('.task__checkMark')
@@ -52,6 +63,10 @@ saveBtn.addEventListener('click', () => {
 		taskTitleArr[0].innerHTML = inputValue
 		taskTextArr[0].innerHTML = textareaValue
 
+
+		taskCheckMarkArr[0].addEventListener('click', () => {
+			taskTitleArr[0].classList.toggle('check')
+		})
 
 
 
@@ -64,18 +79,10 @@ saveBtn.addEventListener('click', () => {
 		alert('Заполните поле заголовка')
 	}
 })
-//======================================================================================================
-
-
-
 
 //======================================================================================================
 
-// const taskTitleArr = document.querySelectorAll('.task__title')
-// const taskCheckMarkArr = document.querySelectorAll('.task__checkMark')
+//======================================================================================================
 
-// taskCheckMarkArr[0].addEventListener('click', () => {
-// 	taskTitleArr[0].classList.toggle('check')
-// })
 
 //======================================================================================================
