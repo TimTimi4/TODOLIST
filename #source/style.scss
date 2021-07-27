@@ -112,17 +112,20 @@ body {
 	position: relative;
 	background: #fff;
 	border-radius: 4px;
+	max-width: 490px;
 	&__title {
-		padding: 16px 0px 0px 21px;
+		padding: 16px 40px 0px 21px;
 		font-weight: 900;
 		font-size: 16px;
 		line-height: 22px;
+		word-break: break-all;
 	}
 
 	&__text {
 		padding: 7px 53px 51px 20px;
 		font-size: 16px;
 		line-height: 22px;
+		word-break: break-all;
 	}
 
 	&__checkMark {
@@ -136,13 +139,31 @@ body {
 		border-radius: 4px;
 	}
 
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0px 21px 16px 23px;
+	}
+
+	&__change {
+		color: #2a5b94;
+		font-size: 14px;
+		line-height: 19px;
+		background-color: transparent;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
 	&__trash {
-		position: absolute;
-		right: 21.17px;
-		bottom: 15.5px;
 		font-size: 15px;
 		background-color: transparent;
 	}
+}
+
+.fas {
+	padding: 0px 8px 0px 0px;
 }
 
 .check {

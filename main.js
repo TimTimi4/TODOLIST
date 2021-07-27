@@ -38,13 +38,16 @@ const textarea = document.querySelector('.popup-form__descField')
 
 saveBtn.addEventListener('click', () => {
 	if (input.value != '') {
-
+		// ! Добавить блок задачи
 		const divTask = document.createElement('div')
 		const h6TaskTitle = document.createElement('h6')
 		const divTaskText = document.createElement('div')
 		const inputTaskCheckMark = document.createElement('input')
 		const buttonTaskTrash = document.createElement('button')
 		const iTrash = document.createElement('i')
+		const divTaskBottom = document.createElement('div')
+		const buttonChangeTask = document.createElement('button')
+		const iPen = document.createElement('i')
 		divTask.classList.add('task', 'row__task')
 		h6TaskTitle.classList.add('task__title')
 		divTaskText.classList.add('task__text')
@@ -53,15 +56,22 @@ saveBtn.addEventListener('click', () => {
 		inputTaskCheckMark.setAttribute('name', 'checkMark')
 		buttonTaskTrash.setAttribute('class', 'task__trash')
 		buttonTaskTrash.setAttribute('type', 'button')
-		divTask.prepend(h6TaskTitle, divTaskText, inputTaskCheckMark, buttonTaskTrash)
+		divTaskBottom.classList.add('task__bottom')
+		buttonChangeTask.setAttribute('type', 'button')
+		buttonChangeTask.setAttribute('class', 'task__change')
+		iPen.classList.add('fas', 'fa-pen')
+		divTask.prepend(h6TaskTitle, divTaskText, inputTaskCheckMark, divTaskBottom)
 		iTrash.classList.add('fas', 'fa-trash')
 		buttonTaskTrash.prepend(iTrash)
-
+		divTaskBottom.prepend(buttonChangeTask, buttonTaskTrash)
+		buttonChangeTask.append('изменить')
+		buttonChangeTask.prepend(iPen)
 		rowTask.prepend(divTask)
+		// ! Добавить блок задачи
 
 
 
-
+		// ! Передать значение из поля формы в блок задачи
 		const taskTitleArr = document.querySelectorAll('.task__title')
 		const taskTextArr = document.querySelectorAll('.task__text')
 		const taskCheckMarkArr = document.querySelectorAll('.task__checkMark')
@@ -69,11 +79,12 @@ saveBtn.addEventListener('click', () => {
 		const textareaValue = textarea.value
 		taskTitleArr[0].innerHTML = inputValue
 		taskTextArr[0].innerHTML = textareaValue
-
-
+		// !======================Галочку на чекбокс====================
 		taskCheckMarkArr[0].addEventListener('click', () => {
 			taskTitleArr[0].classList.toggle('check')
 		})
+		// ! Передать значение из поля формы в блок задачи
+
 
 
 		// ! Удаление задачи
@@ -81,8 +92,6 @@ saveBtn.addEventListener('click', () => {
 		const divTaskArr = document.querySelectorAll('.task')
 		console.log(divTaskArr)
 		console.log(trashArr)
-
-
 		const popupDeleteTask = document.querySelector('.popupDeleteTask')
 		const acceptDelete = document.querySelector('.popupDeleteTask__btn')
 		const deniedDelete = document.querySelector('.popupDeleteTask__close')
@@ -103,8 +112,43 @@ saveBtn.addEventListener('click', () => {
 				})
 			})
 		}
+		// ! Удаление задачи
+
+		// ! Изменение задачи
+		const ChangeTaskArr = document.querySelectorAll('.task__change')
+		const popupChangeTask = document.querySelector('.popupChangeTask')
+		const popupCloseChange = document.querySelector('.close-popupChangeTask')
+		const popupChangeBg = document.querySelector('.popupChangeTask__bg')
+		const closeChabgeModalBtn = document.querySelector('.popupChangeTask-form__closeModalBtn')
+		const saveChangeBtn = document.querySelector('.saveChangeBtn')
 
 
+		for (let i = 0; i < ChangeTaskArr.length; i++) {
+			ChangeTaskArr[0].addEventListener('click', () => {
+				const changeTitleField = document.querySelector('.popupChangeTask-form__titleField')
+				const changeTextField = document.querySelector('.popupChangeTask-form__descField')
+				popupChangeTask.classList.add('openChangeModal')
+				changeTitleField.value = inputValue
+				changeTextField.value = textareaValue
+				saveChangeBtn.addEventListener('click', () => {
+					taskTitleArr[0].innerHTML = changeTitleField.value
+					taskTextArr[0].innerHTML = changeTextField.value
+					popupChangeTask.classList.remove('openChangeModal')
+				})
+			})
+			popupCloseChange.addEventListener('click', () => {
+				popupChangeTask.classList.remove('openChangeModal')
+			})
+
+			popupChangeBg.addEventListener('click', () => {
+				popupChangeTask.classList.remove('openChangeModal')
+			})
+
+			closeChabgeModalBtn.addEventListener('click', () => {
+				popupChangeTask.classList.remove('openChangeModal')
+			})
+
+		}
 
 
 
