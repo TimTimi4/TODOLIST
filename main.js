@@ -49,6 +49,7 @@ saveBtn.addEventListener('click', () => {
 		const buttonChangeTask = document.createElement('button')
 		const iPen = document.createElement('i')
 		divTask.classList.add('task', 'row__task')
+		rowTask.prepend(divTask)
 		h6TaskTitle.classList.add('task__title')
 		divTaskText.classList.add('task__text')
 		inputTaskCheckMark.classList.add('task__checkMark')
@@ -66,7 +67,6 @@ saveBtn.addEventListener('click', () => {
 		divTaskBottom.prepend(buttonChangeTask, buttonTaskTrash)
 		buttonChangeTask.append('изменить')
 		buttonChangeTask.prepend(iPen)
-		rowTask.prepend(divTask)
 		// ! Добавить блок задачи
 
 
@@ -89,9 +89,7 @@ saveBtn.addEventListener('click', () => {
 
 		// ! Удаление задачи
 		const trashArr = document.querySelectorAll('.task__trash')
-		const divTaskArr = document.querySelectorAll('.task')
-		console.log(divTaskArr)
-		console.log(trashArr)
+		const taskArr = document.querySelectorAll('.task')
 		const popupDeleteTask = document.querySelector('.popupDeleteTask')
 		const acceptDelete = document.querySelector('.popupDeleteTask__btn')
 		const deniedDelete = document.querySelector('.popupDeleteTask__close')
@@ -101,7 +99,7 @@ saveBtn.addEventListener('click', () => {
 			trashArr[0].addEventListener('click', () => {
 				popupDeleteTask.classList.add('openDeleteModal')
 				acceptDelete.addEventListener('click', () => {
-					divTaskArr[0].remove()
+					taskArr[0].remove()
 					popupDeleteTask.classList.remove('openDeleteModal')
 				})
 				deniedDelete.addEventListener('click', () => {
@@ -111,6 +109,7 @@ saveBtn.addEventListener('click', () => {
 					popupDeleteTask.classList.remove('openDeleteModal')
 				})
 			})
+
 		}
 		// ! Удаление задачи
 
@@ -147,15 +146,7 @@ saveBtn.addEventListener('click', () => {
 			closeChabgeModalBtn.addEventListener('click', () => {
 				popupChangeTask.classList.remove('openChangeModal')
 			})
-
 		}
-
-
-
-
-
-
-
 
 
 
@@ -165,11 +156,24 @@ saveBtn.addEventListener('click', () => {
 		input.value = ''
 		textarea.value = ''
 		popup.classList.remove('open')
+
+
+		localStorage.setItem('taskArr', JSON.stringify(taskArr))
+		localStorage.getItem('taskArr')
+
+
+
+
+
 	}
 	else {
 		alert('Заполните поле заголовка')
 	}
 })
+
+
+
+
 
 //======================================================================================================
 
