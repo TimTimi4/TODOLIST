@@ -34,17 +34,17 @@ const tasksArr = [{
 	id: 1,
 	title: '1 title',
 	text: '1 textarea',
+	done: false,
 },
 {
 	id: 2,
 	title: '2 title',
 	text: '2 textarea',
+	done: false,
 }
 ]
 
-
-
-// // ! Функция получения значений из localstorage
+// ! Функция получения значений из localstorage
 // function getInitialTasks() {
 // 	const save = JSON.parse(localStorage.getItem('task'))
 // 	if (save) {
@@ -56,8 +56,8 @@ const tasksArr = [{
 // const tasksArr = getInitialTasks()
 
 
-// ! Рендерим в HTML заметку
-const createTaskDom = (task) => {
+// ! Рендерим в HTML заметку====================================================
+function createTaskDom(task) {
 	const divTask = document.createElement('div')
 	const h6Title = document.createElement('h6')
 	const divText = document.createElement('div')
@@ -68,12 +68,15 @@ const createTaskDom = (task) => {
 	const buttonChangeTask = document.createElement('button')
 	const iPen = document.createElement('i')
 	divTask.classList.add('task', 'row__task')
-	divTask.setAttribute('id', task.id)
 	h6Title.classList.add('task__title')
 	divText.classList.add('task__text')
 	inputCheckMark.classList.add('task__checkMark')
 	inputCheckMark.setAttribute('type', 'checkbox')
 	inputCheckMark.setAttribute('name', 'checkMark')
+	inputCheckMark.setAttribute('onchange', 'check()')
+	if (task.done == true) {
+		inputCheckMark.classList.add('check')
+	}
 	divTaskBottom.classList.add('task__bottom')
 	divTask.prepend(h6Title, divText, inputCheckMark, divTaskBottom)
 	buttonTaskTrash.setAttribute('class', 'task__trash')
@@ -94,22 +97,18 @@ tasksArr.forEach(task => {
 	const taskDom = createTaskDom(task)
 	taskRow.prepend(taskDom)
 });
+// !================================================================
 
-// !
-
-const taskTitleDOMArr = document.querySelectorAll('.task__title')
-console.log(taskTitleDOMArr)
-const taskCheckMarkDOMArr = document.querySelectorAll('.task__checkMark')
-console.log(taskCheckMarkDOMArr)
-
-for (let i = 0; i < taskCheckMarkDOMArr.lenght; i++) {
-	for (let j = 0; j < taskTitleDOMArr.length; j++) {
-		if (taskCheckMarkDOMArr[i] == taskTitleDOMArr[j]) {
-			taskCheckMarkDOMArr[i].addEventListener('click', () => {
-				taskTitleDOMArr[j].classList.toggle('check')
-			})
-		}
-	}
+function check() {
+	tasksArr.forEach(task => {
+		const checkMarkDomArr = document.querySelectorAll('.task__checkMark')
+		checkMarkDomArr.forEach(checkMark => {
+			if (checkMark.checked) {
+				task.done = true
+			}
+		})
+		return task.done
+	})
 }
 
 
@@ -120,6 +119,12 @@ for (let i = 0; i < taskCheckMarkDOMArr.lenght; i++) {
 
 
 
+
+
+
+
+
+// ! При сохранении заметки
 saveBtn.addEventListener('click', () => {
 	if (input.value != '') {
 		const newTask = {
@@ -135,17 +140,6 @@ saveBtn.addEventListener('click', () => {
 		});
 
 
-
-
-
-
-
-
-
-
-
-
-
 		// localStorage.setItem('task', JSON.stringify(tasksArr))
 		input.value = ''
 		textarea.value = ''
@@ -155,7 +149,5 @@ saveBtn.addEventListener('click', () => {
 		alert('Заполните поле заголовка')
 	}
 })
-
-
 //======================================================================================================
 
