@@ -1,4 +1,4 @@
-//=====================================<Open Modal>=======================================================
+//=====================================<Open Modal>============================================
 const popupOpen = document.querySelector('.todolist__btn')
 const popup = document.querySelector('.popup')
 const popupClose = document.querySelector('.close-popup')
@@ -21,10 +21,10 @@ bgClose.addEventListener('click', () => {
 closeModalBtn.addEventListener('click', () => {
 	popup.classList.remove('open')
 })
-//=====================================<Open Modal>=======================================================
+//=====================================<Open Modal>===========================================
 
 
-//======================================================================================================
+//================================================================================
 const saveBtn = document.querySelector('.saveBtn')
 const taskRow = document.querySelector('.header-todolist__row')
 const input = document.querySelector('.popup-form__titleField')
@@ -46,17 +46,34 @@ const tasksArr = [{
 
 // ! Функция получения значений из localstorage
 // function getInitialTasks() {
-// 	const save = JSON.parse(localStorage.getItem('task'))
-// 	if (save) {
-// 		return save
-// 	} else {
-// 		return []
-// 	}
+//  const save = JSON.parse(localStorage.getItem('task'))
+//  if (save) {
+//    return save
+//  } else {
+//    return []
+//  }
 // }
 // const tasksArr = getInitialTasks()
 
+const render = () => {
+	taskRow.innerHTML = ''
+	tasksArr.forEach(task => {
+		const taskDom = createTaskDom(task)
+		taskRow.prepend(taskDom)
+	});
+}
 
-// ! Рендерим в HTML заметку====================================================
+const onCheck = (event) => {
+	const idCheckMark = Number(event.target.id)
+	const index = tasksArr.findIndex((obj) => obj.id == idCheckMark)
+	const newItem = tasksArr[index]
+	newItem.done = !tasksArr[index].done
+	tasksArr.splice(index, 1, newItem)
+	render()
+}
+
+
+// ! Создаем дом элемент====================================================
 function createTaskDom(task) {
 	const divTask = document.createElement('div')
 	const h6Title = document.createElement('h6')
@@ -70,12 +87,15 @@ function createTaskDom(task) {
 	divTask.classList.add('task', 'row__task')
 	h6Title.classList.add('task__title')
 	divText.classList.add('task__text')
+
 	inputCheckMark.classList.add('task__checkMark')
 	inputCheckMark.setAttribute('type', 'checkbox')
 	inputCheckMark.setAttribute('name', 'checkMark')
-	inputCheckMark.setAttribute('onchange', 'check()')
+	inputCheckMark.setAttribute('id', task.id)
+	inputCheckMark.addEventListener('change', onCheck)
+	inputCheckMark.checked = task.done
 	if (task.done == true) {
-		inputCheckMark.classList.add('check')
+		h6Title.classList.add('check')
 	}
 	divTaskBottom.classList.add('task__bottom')
 	divTask.prepend(h6Title, divText, inputCheckMark, divTaskBottom)
@@ -97,31 +117,9 @@ tasksArr.forEach(task => {
 	const taskDom = createTaskDom(task)
 	taskRow.prepend(taskDom)
 });
+
+
 // !================================================================
-
-function check() {
-	tasksArr.forEach(task => {
-		const checkMarkDomArr = document.querySelectorAll('.task__checkMark')
-		checkMarkDomArr.forEach(checkMark => {
-			if (checkMark.checked) {
-				task.done = true
-			}
-		})
-		return task.done
-	})
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ! При сохранении заметки
@@ -133,11 +131,7 @@ saveBtn.addEventListener('click', () => {
 			text: textarea.value,
 		}
 		tasksArr.push(newTask)
-		taskRow.innerHTML = ''
-
-		tasksArr.forEach(task => {
-			taskRow.prepend(createTaskDom(task))
-		});
+		render()
 
 
 		// localStorage.setItem('task', JSON.stringify(tasksArr))
@@ -149,5 +143,4 @@ saveBtn.addEventListener('click', () => {
 		alert('Заполните поле заголовка')
 	}
 })
-//======================================================================================================
-
+//========================================================================================
