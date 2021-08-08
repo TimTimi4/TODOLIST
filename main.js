@@ -22,29 +22,17 @@ const saveBtn = document.querySelector('.saveBtn')
 const taskRow = document.querySelector('.header-todolist__row')
 const input = document.querySelector('.popup-form__titleField')
 const textarea = document.querySelector('.popup-form__descField')
-const tasksArr = [{
-	id: 1,
-	title: '1 title',
-	text: '1 textarea',
-	done: false,
-},
-{
-	id: 2,
-	title: '2 title',
-	text: '2 textarea',
-	done: false,
-}
-]
+
 // ! Функция получения значений из localstorage
-// function getInitialTasks() {
-//  const save = JSON.parse(localStorage.getItem('task'))
-//  if (save) {
-//    return save
-//  } else {
-//    return []
-//  }
-// }
-// const tasksArr = getInitialTasks()
+function getInitialTasks() {
+	const save = JSON.parse(localStorage.getItem('task'))
+	if (save) {
+		return save
+	} else {
+		return []
+	}
+}
+const tasksArr = getInitialTasks()
 
 // ! Функция удаляющая все старые заметки и записывающая измененную заметку
 const render = () => {
@@ -188,52 +176,6 @@ tasksArr.forEach(task => {
 });
 // !=============================  Создание заметки  ====================================
 
-
-
-
-
-
-
-
-
-// changePopupOpenArr.forEach(changePopupOpen => {
-//   changePopupOpen.addEventListener('click', () =>{
-//     changePopup.classList.add('open')
-//     const titleChangePopupField = document.querySelector('.popupChangeTask-form__titleField')
-//     const textChangePopupField = document.querySelector('.popupChangeTask-form__descField')
-//     const idchangePopupOpen = Number(changePopupOpen.id)
-//     const indexTask = tasksArr.findIndex((task) => task.id == idchangePopupOpen)
-//     titleChangePopupField.value = tasksArr[indexTask].title
-//     textChangePopupField.value = tasksArr[indexTask].text
-//     saveChangeBtn.addEventListener('click', () => {
-//       const newElems = tasksArr[indexTask]
-//       newElems.title = titleChangePopupField.value
-//       newElems.text =  textChangePopupField.value
-//       tasksArr.splice(indexTask, 1, newElems)
-//       console.log(tasksArr)
-//       render()
-//       changePopup.classList.remove('open')
-//     })
-//   })
-// })
-
-
-
-
-
-
-
-
-
-
-// !=============================   Изменение заметки   ====================================
-
-
-
-
-
-
-
 // ! При сохранении заметки
 saveBtn.addEventListener('click', () => {
 	if (input.value != '') {
@@ -244,7 +186,7 @@ saveBtn.addEventListener('click', () => {
 		}
 		tasksArr.push(newTask)
 		render()
-		// localStorage.setItem('task', JSON.stringify(tasksArr))
+		localStorage.setItem('task', JSON.stringify(tasksArr))
 
 		input.value = ''
 		textarea.value = ''

@@ -458,6 +458,19 @@ h6 {
   padding: 0px 10px 0px 10px;
 }
 
+@media (max-width: 1032px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    max-width: none;
+    padding: 0 25px;
+  }
+}
+
 body {
   background-color: #5f81b2;
 }
@@ -496,6 +509,12 @@ body {
   color: #fff;
 }
 
+@media (max-width: 767.98px) {
+  .todolist__title {
+    text-align: center;
+  }
+}
+
 .header-todolist__top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -508,12 +527,29 @@ body {
           align-items: center;
 }
 
+@media (max-width: 767.98px) {
+  .header-todolist__top {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 10px 80px 10px 80px;
+  }
+}
+
 .header-todolist__bottom {
   font-weight: 900;
   font-size: 18px;
   line-height: 25px;
   text-transform: uppercase;
   color: #ffffff;
+}
+
+@media (max-width: 767.98px) {
+  .header-todolist__bottom {
+    text-align: center;
+  }
 }
 
 .header-todolist__row {
@@ -526,6 +562,14 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+@media (max-width: 767.98px) {
+  .header-todolist__row {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .row__task {
@@ -541,6 +585,29 @@ body {
 
 .row__task:nth-child(even) {
   margin: 10px 0px 10px 9.5px;
+}
+
+@media (max-width: 1020px) {
+  .row__task:nth-child(odd) {
+    margin: 7px 7px 7px 0px;
+  }
+  .row__task:nth-child(even) {
+    margin: 7px 0px 7px 7px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .row__task {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 100%;
+            flex: 0 1 100%;
+  }
+  .row__task:nth-child(odd) {
+    margin: 7px 0px 7px 0px;
+  }
+  .row__task:nth-child(even) {
+    margin: 7px 0px 7px 0px;
+  }
 }
 
 .task {
