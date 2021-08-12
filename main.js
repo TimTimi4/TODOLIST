@@ -1,199 +1,123 @@
-//=====================================<Open Modal>============================================
-const popupOpen = document.querySelector('.todolist__btn')
-const popup = document.querySelector('.popup')
-const popupClose = document.querySelector('.close-popup')
-const bgClose = document.querySelector('.popup__bg')
-const closeModalBtn = document.querySelector('.closeModalBtn')
-popupOpen.addEventListener('click', () => {
-	popup.classList.add('open')
-})
-popupClose.addEventListener('click', () => {
-	popup.classList.remove('open')
-})
-bgClose.addEventListener('click', () => {
-	popup.classList.remove('open')
-})
-closeModalBtn.addEventListener('click', () => {
-	popup.classList.remove('open')
-})
-//=====================================<Open Modal>===========================================
-//================================================================================
-const saveBtn = document.querySelector('.saveBtn')
-const taskRow = document.querySelector('.header-todolist__row')
-const input = document.querySelector('.popup-form__titleField')
-const textarea = document.querySelector('.popup-form__descField')
+import { openTaskModal, popup } from './moduls/openTaskModal.js';
+openTaskModal()
 
-// ! Функция получения значений из localstorage
-function getInitialTasks() {
+function getTasksFromLocalStorage() {
 	const save = JSON.parse(localStorage.getItem('task'))
-	if (save) {
-		return save
-	} else {
-		return []
-	}
+	return save || []
 }
-const tasksArr = getInitialTasks()
+const tasks = getTasksFromLocalStorage()
 
-// ! Функция удаляющая все старые заметки и записывающая измененную заметку
+const taskRow = document.querySelector('.header-todolist__row')
+
 const render = () => {
 	taskRow.innerHTML = ''
-	tasksArr.forEach(task => {
+	tasks.forEach(task => {
 		const taskDom = createTaskDom(task)
 		taskRow.prepend(taskDom)
 	});
 }
 
-// ! Функция изменяющая своство done на противоположное и рендер
+
+
 const onCheck = (event) => {
 	const idCheckMark = Number(event.target.id)
-	const index = tasksArr.findIndex((obj) => obj.id == idCheckMark)
-	const newItem = tasksArr[index]
-	newItem.done = !tasksArr[index].done
-	tasksArr.splice(index, 1, newItem)
+	const indexTask = tasks.findIndex((obj) => obj.id == idCheckMark)
+	const newItem = tasks[indexTask]
+	newItem.done = !tasks[indexTask].done
+	tasks.splice(indexTask, 1, newItem)
 	render()
 }
 
 
-
-// !=============================   Изменение заметки   ====================================
-const changePopup = document.querySelector('.popupChangeTask')
-const changePopupClose = document.querySelector('.close-popupChangeTask')
-const changeBgClose = document.querySelector('.popupChangeTask__bg')
-const changeCloseModalBtn = document.querySelector('.popupChangeTask-form__closeModalBtn')
-const saveChangeBtn = document.querySelector('.saveChangeBtn')
-const titleChangePopupField = document.querySelector('.popupChangeTask-form__titleField')
-const textChangePopupField = document.querySelector('.popupChangeTask-form__descField')
-
-let indexTask = null
-
+import { saveChange, changePopup, changePopupTitle, changePopupText } from './moduls/changeTaskModal.js';
+saveChange()
+let indexChangeTask = null
 const onClick = (event) => {
 	changePopup.classList.add('open')
 	const idchangePopup = Number(event.target.id)
-	indexTask = tasksArr.findIndex((task) => task.id == idchangePopup)
-	titleChangePopupField.value = tasksArr[indexTask].title
-	textChangePopupField.value = tasksArr[indexTask].text
+	indexChangeTask = tasks.findIndex((task) => task.id == idchangePopup)
+	changePopupTitle.value = tasks[indexChangeTask].title
+	changePopupText.value = tasks[indexChangeTask].text
 }
-
-saveChangeBtn.addEventListener('click', () => {
-	const newElems = tasksArr[indexTask]
-	console.log(newElems)
-	newElems.title = titleChangePopupField.value
-	newElems.text = textChangePopupField.value
-	tasksArr.splice(indexTask, 1, newElems)
-	render()
-	changePopup.classList.remove('open')
-})
-
-changePopupClose.addEventListener('click', () => {
-	changePopup.classList.remove('open')
-})
-changeBgClose.addEventListener('click', () => {
-	changePopup.classList.remove('open')
-})
-changeCloseModalBtn.addEventListener('click', () => {
-	changePopup.classList.remove('open')
-})
-// !=============================   Изменение заметки   ====================================
+export { indexChangeTask, render, tasks, indexDeleteTask }
 
 
-// !=============================   Удаление заметки   ====================================
-const deletePopup = document.querySelector('.popupDeleteTask')
-const deletePopupClose = document.querySelector('.close-popupDeleteTask')
-const deleteBgClose = document.querySelector('.popupDeleteTask__bg')
-const deleteBtn = document.querySelector('.popupDeleteTask__btn')
 
+import { deleteTask, deletePopup } from './moduls/deleteTaskModal.js';
+deleteTask()
 let indexDeleteTask = null
-
-
 const onDelete = (event) => {
 	deletePopup.classList.add('open')
 	const idDeletePopup = Number(event.target.id)
-	indexDeleteTask = tasksArr.findIndex((task) => task.id == idDeletePopup)
+	indexDeleteTask = tasks.findIndex((task) => task.id == idDeletePopup)
 }
 
-deleteBtn.addEventListener('click', () => {
-	tasksArr.splice(indexDeleteTask, 1)
-	console.log(tasksArr)
-	render()
-	deletePopup.classList.remove('open')
-})
 
 
-deletePopupClose.addEventListener('click', () => {
-	deletePopup.classList.remove('open')
-})
-deleteBgClose.addEventListener('click', () => {
-	deletePopup.classList.remove('open')
-})
+const createEl = (options) => {
+	const { tag, classNameArr, textContent, type, name, id } = options
+	const domElem = document.createElement(tag)
+	classNameArr.forEach(className => domElem.classList.add(className))
+	if (textContent) domElem.append(textContent)
+	if (type) domElem.setAttribute(Object.keys(type)[0], type.type)
+	if (name) domElem.setAttribute(Object.keys(name)[0], name.name)
+	if (id) domElem.setAttribute(Object.keys(id)[0], id.id)
+	return domElem
+}
 
-
-// !=============================  Создание заметки  ====================================
 function createTaskDom(task) {
-	const divTask = document.createElement('div')
-	const h6Title = document.createElement('h6')
-	const divText = document.createElement('div')
-	const inputCheckMark = document.createElement('input')
-	const divTaskBottom = document.createElement('div')
-	const buttonTaskTrash = document.createElement('button')
-	const iTrash = document.createElement('i')
-	const buttonChangeTask = document.createElement('button')
-	const iPen = document.createElement('i')
-	divTask.classList.add('task', 'row__task')
-	h6Title.classList.add('task__title')
-	divText.classList.add('task__text')
-	inputCheckMark.classList.add('task__checkMark')
-	inputCheckMark.setAttribute('type', 'checkbox')
-	inputCheckMark.setAttribute('name', 'checkMark')
-	inputCheckMark.setAttribute('id', task.id)
-	inputCheckMark.addEventListener('change', onCheck) // Вешаем на чекбокс событие изменения
+	const divTask = createEl({ tag: 'div', classNameArr: ['task', 'row__task'] })
+	const h6Title = createEl({ tag: 'h6', classNameArr: ['task__title'], textContent: task.title })
+	const divText = createEl({ tag: 'div', classNameArr: ['task__text'], textContent: task.text })
+
+	const inputCheckMark = createEl(
+		{
+			tag: 'input',
+			classNameArr: ['task__checkMark'],
+			type: { type: 'checkbox' },
+			name: { name: 'checkMark' },
+			id: { id: Number(task.id) }
+		}
+	)
+	inputCheckMark.addEventListener('change', onCheck)
 	inputCheckMark.checked = task.done
 	if (task.done == true) {
 		h6Title.classList.add('check')
 	}
-	divTaskBottom.classList.add('task__bottom')
-	divTask.prepend(h6Title, divText, inputCheckMark, divTaskBottom)
-	buttonTaskTrash.setAttribute('class', 'task__trash')
-	buttonTaskTrash.setAttribute('type', 'button')
-	iTrash.classList.add('fas', 'fa-trash')
-	iTrash.setAttribute('id', task.id)
+
+	const divTaskBottom = createEl({ tag: 'div', classNameArr: ['task__bottom'] })
+	const buttonTaskTrash = createEl({ tag: 'button', classNameArr: ['task__trash'], type: { type: 'button' } })
+
+	const iTrash = createEl({ tag: 'i', classNameArr: ['fas', 'fa-trash'], id: { id: Number(task.id) } })
 	iTrash.addEventListener('click', onDelete)
-	buttonChangeTask.setAttribute('type', 'button')
-	buttonChangeTask.setAttribute('class', 'task__change')
-	buttonChangeTask.setAttribute('id', task.id)
-	buttonChangeTask.addEventListener('click', onClick)
-	iPen.classList.add('fas', 'fa-pen')
-	divTaskBottom.prepend(buttonChangeTask, buttonTaskTrash)
 	buttonTaskTrash.prepend(iTrash)
-	buttonChangeTask.append('изменить')
+
+	const buttonChangeTask = createEl(
+		{
+			tag: 'button',
+			classNameArr: ['task__change'],
+			type: { type: 'button' },
+			id: { id: Number(task.id) },
+			textContent: 'изменить'
+		}
+	)
+	buttonChangeTask.addEventListener('click', onClick)
+
+	const iPen = createEl({ tag: 'i', classNameArr: ['fas', 'fa-pen'] })
 	buttonChangeTask.prepend(iPen)
-	h6Title.textContent = task.title
-	divText.textContent = task.text
+
+
+	divTask.prepend(h6Title, divText, inputCheckMark, divTaskBottom)
+	divTaskBottom.prepend(buttonChangeTask, buttonTaskTrash)
+
 	return divTask
 }
-tasksArr.forEach(task => {
+tasks.forEach(task => {
 	const taskDom = createTaskDom(task)
 	taskRow.prepend(taskDom)
-});
-// !=============================  Создание заметки  ====================================
-
-// ! При сохранении заметки
-saveBtn.addEventListener('click', () => {
-	if (input.value != '') {
-		const newTask = {
-			id: String(tasksArr.length + 1),
-			title: input.value,
-			text: textarea.value,
-		}
-		tasksArr.push(newTask)
-		render()
-		localStorage.setItem('task', JSON.stringify(tasksArr))
-
-		input.value = ''
-		textarea.value = ''
-		popup.classList.remove('open')
-	}
-	else {
-		alert('Заполните поле заголовка')
-	}
 })
-//========================================================================================
+
+
+import { saveTask } from './moduls/saveTask.js';
+saveTask()
+

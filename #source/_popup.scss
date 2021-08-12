@@ -87,11 +87,20 @@
 		border-radius: 4px;
 	}
 
+	&__titleError {
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 16px;
+		color: #ac4141;
+		visibility: hidden;
+		opacity: 0;
+	}
+
 	&__saveBtn {
 		background: #5f81b3;
 		border-radius: 4px;
 		text-align: center;
-		margin: 19px 0px 0px 0px;
+		margin: 10px 0px 0px 0px;
 	}
 
 	&__closeModalBtn {
@@ -172,7 +181,7 @@
 		line-height: 22px;
 		color: #ffffff;
 		padding: 5px 0px 5px 0px;
-		background: #5f81b3;
+		background: #ac4141;
 		border-radius: 4px;
 	}
 
@@ -184,7 +193,7 @@
 		color: #ffffff;
 		padding: 5px 0px 5px 0px;
 		border-radius: 4px;
-		background: #5f81b3;
+		background: #aeaeae;
 	}
 }
 .openDeleteModal {
@@ -311,9 +320,4 @@
 	color: #ffffff;
 	padding: 9px 0px 9px 0px;
 	min-width: 460px;
-}
-
-.openChangeModal {
-	visibility: visible;
-	opacity: 1;
 }

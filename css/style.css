@@ -194,11 +194,20 @@ h6 {
   border-radius: 4px;
 }
 
+.popup-form__titleError {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ac4141;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .popup-form__saveBtn {
   background: #5f81b3;
   border-radius: 4px;
   text-align: center;
-  margin: 19px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 .popup-form__closeModalBtn {
@@ -289,7 +298,7 @@ h6 {
   line-height: 22px;
   color: #ffffff;
   padding: 5px 0px 5px 0px;
-  background: #5f81b3;
+  background: #ac4141;
   border-radius: 4px;
 }
 
@@ -303,7 +312,7 @@ h6 {
   color: #ffffff;
   padding: 5px 0px 5px 0px;
   border-radius: 4px;
-  background: #5f81b3;
+  background: #aeaeae;
 }
 
 .openDeleteModal {
@@ -445,11 +454,6 @@ h6 {
   color: #ffffff;
   padding: 9px 0px 9px 0px;
   min-width: 460px;
-}
-
-.openChangeModal {
-  visibility: visible;
-  opacity: 1;
 }
 
 .container {
