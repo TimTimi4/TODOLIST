@@ -5,17 +5,25 @@ const changePopupCloseBtn = document.querySelector('.popupChangeTask-form__close
 const saveChangeBtn = document.querySelector('.saveChangeBtn')
 const changePopupTitle = document.querySelector('.popupChangeTask-form__titleField')
 const changePopupText = document.querySelector('.popupChangeTask-form__descField')
+const changePopupTitleError = document.querySelector('.popupChangeTask__titleError')
 
 import { tasks, indexChangeTask, render } from '/main.js';
 
 function saveChange() {
 	saveChangeBtn.addEventListener('click', () => {
 		const newValues = tasks[indexChangeTask]
-		newValues.title = changePopupTitle.value
-		newValues.text = changePopupText.value
-		tasks.splice(indexChangeTask, 1, newValues)
-		render()
-		changePopup.classList.remove('open')
+		if (changePopupTitle.value != '') {
+			newValues.title = changePopupTitle.value
+			newValues.text = changePopupText.value
+			tasks.splice(indexChangeTask, 1, newValues)
+			render()
+			changePopup.classList.remove('open')
+			changePopupTitleError.classList.remove('open')
+		} 
+		else {
+			console.log('говно')
+			changePopupTitleError.classList.add('open')
+		}
 	})
 
 	changePopupClose.addEventListener('click', () => {

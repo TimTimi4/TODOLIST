@@ -366,6 +366,15 @@ h6 {
   color: #000000;
 }
 
+.popupChangeTask__titleError {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ac4141;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .open {
   visibility: visible;
   opacity: 1;
@@ -499,6 +508,12 @@ body {
   border-radius: 4px;
   height: 40px;
   padding: 0px 56px 0px 56px;
+}
+
+@media (max-width: 479.98px) {
+  .todolist__btn {
+    height: 70px;
+  }
 }
 
 .todolist__body {

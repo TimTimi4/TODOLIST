@@ -31,4 +31,4 @@ function saveTask() {
 	})
 }
 
-export { saveTask }
+export { saveTask, titleError, input}

@@ -245,6 +245,15 @@
 		line-height: 27px;
 		color: #000000;
 	}
+
+	&__titleError {
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 16px;
+		color: #ac4141;
+		visibility: hidden;
+		opacity: 0;
+	}
 }
 
 .open {

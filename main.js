@@ -92,15 +92,13 @@ function createTaskDom(task) {
 	iTrash.addEventListener('click', onDelete)
 	buttonTaskTrash.prepend(iTrash)
 
-	const buttonChangeTask = createEl(
-		{
-			tag: 'button',
-			classNameArr: ['task__change'],
-			type: { type: 'button' },
-			id: { id: Number(task.id) },
-			textContent: 'изменить'
-		}
-	)
+	const buttonChangeTask = createEl({
+		tag: 'button',
+		classNameArr: ['task__change'],
+		type: { type: 'button' },
+		id: { id: Number(task.id) },
+		textContent: 'изменить'
+	})
 	buttonChangeTask.addEventListener('click', onClick)
 
 	const iPen = createEl({ tag: 'i', classNameArr: ['fas', 'fa-pen'] })

@@ -58,6 +58,9 @@ body {
 		border-radius: 4px;
 		height: 40px;
 		padding: 0px 56px 0px 56px;
+		@media (max-width: $md4) {
+			height: 70px;
+		}
 	}
 
 	&__body {
